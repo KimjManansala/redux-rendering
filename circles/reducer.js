@@ -1,7 +1,7 @@
 const initialState = [
     {
         radius: 50,
-        color: "#FF00FF"
+        colors: "#FF00FF"
     },
     {
         radius: 30,
@@ -19,9 +19,15 @@ const initialState = [
 
 const reducer = (state = initialState, action) => {
     // Handle actions here - make sure you don't mutate the state!
+    let nextState = [...state]
     const { type } = action;
+    switch (type){
+        case "ADD_CIRCLE":
+            nextState.push({radius: action.radius, color: action.color})
 
+        default:
+            return nextState
+    }
     // ACTION: Add a random circle
 
-    return state;
 }
